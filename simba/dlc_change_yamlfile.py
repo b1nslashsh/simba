@@ -14,7 +14,7 @@ def generatetempyaml(yamlfile,videolist):
         deeplabcut.add_new_videos(tempyaml,[videolist],copy_videos=True)
 
         with open(tempyaml) as f:
-            read_yaml = yaml.load(f, Loader=yaml.FullLoader)
+            read_yaml = yaml.load(f, Loader=yaml.SafeLoader)
 
         original_videosets = read_yaml['video_sets'].keys()
 
@@ -59,7 +59,7 @@ def generatetempyaml_multi(yamlfile,videolist):
 def updateiteration(yamlfile,iteration):
     yamlPath = yamlfile
     with open(yamlPath) as f:
-        read_yaml = yaml.load(f, Loader=yaml.FullLoader)
+        read_yaml = yaml.load(f, Loader=yaml.safeLoader)
 
     read_yaml["iteration"] = int(iteration)
 
